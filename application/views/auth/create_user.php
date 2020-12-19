@@ -1,3 +1,8 @@
+<div>&nbsp</div>
+<style>
+    .container{text-align: center;}
+</style>
+<div class="container">
 <h1><?php echo lang('create_user_heading');?></h1>
 <p><?php echo lang('create_user_subheading');?></p>
 
@@ -55,3 +60,4 @@
       <p><?php echo form_submit('submit', lang('create_user_submit_btn'));?></p>
 
 <?php echo form_close();?>
+      </div>

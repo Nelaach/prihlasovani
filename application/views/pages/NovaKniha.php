@@ -23,7 +23,7 @@
                 ?>
                 <div class="row">
                     <div class="col-md-6">
-                        <label>Název kurzu</label>
+                        <label>Název knihy</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                             </div>
@@ -33,18 +33,18 @@
 
 
                     <div class="col-md-6">
-                        <label>Počet účastníků</label>
+                        <label>Autor</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                             </div>
-                            <input type="number" min="5" max="50" class="form-control" name="pocet_mist">
+                            <input type="text" class="form-control" name="pocet_mist">
                         </div> 
                     </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label>Popis</label>
+                    <label>Děj?</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="popis"></textarea>
 
                 </div>

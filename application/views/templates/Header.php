@@ -18,13 +18,8 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.9/css/mdb.min.css" rel="stylesheet">
     </head>
 
+
     <body>
-        <?php
-        $email = $this->session->userdata('email');
-        foreach ($ucitel as $key) {
-            $oUcitel = $key->funkce;
-        }
-        ?>
 
         <nav class="mb-1 navbar navbar-expand-lg navbar-dark orange lighten-1 fixed-top">
 
@@ -33,31 +28,25 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+          
+                <?php foreach($polozky as $p): ?>
+        <li class ="nav-item">
+        <a class="nav-link" href="<?php echo base_url('pages/')?><?=$p->display?>"><?= $p->display?><span class="sr-only">(current)</span></a>
+        </li>            
 
-                    <?php if ($oUcitel == "ucitel") { ?> 
-                        <?php if (!$shoda) { ?> 
-                            <li class="nav-item"> <a class="nav-link" <a href="<?php echo base_url('main/NovyKurz'); ?>">Nový kurz</a></li>                
-                        <?php } ?>
-                    <?php } ?>
+    <?php endforeach; ?>
+ 
+     
+     
+    </ul>
 
-                    <?php foreach ($shoda as $shod) { ?>
-                        <?php if ($shoda) { ?> 
-                            <li class="nav-item"> <a class="nav-link" <a href="<?php echo base_url('main/UcitelKurz'); ?>"><?= $shod->nazev ?></a></li>                
-
-                        <?php } ?>
-                    <?php } ?>
-
-
-                    <li class="nav-item"> <a class="nav-link" <a href="<?php echo base_url('main/PrehledKurzu'); ?>">Přehled Kurzů</a></li>
-
-                </ul>
 
                 <ul class="navbar-nav">
                     <form class="form-inline my-2 my-lg-0">
-
-                        <li class="nav-item">  <?php echo $email; ?></li>
-                        <li class="nav-item"> <a class="nav-link"     <a href='<?php echo base_url() . "index.php/Main/logout"; ?>'>Odhlásit se</a>  </li>
+                        <li class="nav-item"> <a class="nav-link"     <a href="<?php echo base_url('Auth/create_user'); ?>">Registrovat nového uživatele</a>  </li>
+                        <li class="nav-item"> <a class="nav-link"     <a href="<?php echo base_url('Auth/logout'); ?>">Odhlásit se</a>  </li>
 
                     </form>            
 
@@ -69,6 +58,9 @@
 
 
             </div>
+
         </nav>
+                    <div>&nbsp</div>
+
     </body>
 </html>

@@ -26,7 +26,9 @@ class Auth extends CI_Controller
 	 */
 	public function index()
 	{
-
+                        $this->load->model('Cetba_model');
+            $data['polozky'] = $this->Cetba_model->get_menu();
+                           $this->load->view('templates/Header',$data);
 		if (!$this->ion_auth->logged_in())
 		{
 			// redirect them to the login page
@@ -63,7 +65,11 @@ class Auth extends CI_Controller
 	 * Log the user in
 	 */
 	public function login()
-	{
+	{   
+                        $this->load->model('Cetba_model');
+            $data['polozky'] = $this->Cetba_model->get_menu();
+                           $this->load->view('templates/Header',$data);
+
 		$this->data['title'] = $this->lang->line('login_heading');
 
 		// validate form input
@@ -81,7 +87,7 @@ class Auth extends CI_Controller
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/', 'refresh');
+				redirect('auth/NovaKniha', 'refresh');
 			}
 			else
 			{
@@ -119,6 +125,10 @@ class Auth extends CI_Controller
 	 */
 	public function logout()
 	{
+                        $this->load->model('Cetba_model');
+            $data['polozky'] = $this->Cetba_model->get_menu();
+                           $this->load->view('templates/Header',$data);
+
 		$this->data['title'] = "Logout";
 
 		// log the user out
@@ -133,6 +143,10 @@ class Auth extends CI_Controller
 	 */
 	public function change_password()
 	{
+                        $this->load->model('Cetba_model');
+            $data['polozky'] = $this->Cetba_model->get_menu();
+                           $this->load->view('templates/Header',$data);
+
 		$this->form_validation->set_rules('old', $this->lang->line('change_password_validation_old_password_label'), 'required');
 		$this->form_validation->set_rules('new', $this->lang->line('change_password_validation_new_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|matches[new_confirm]');
 		$this->form_validation->set_rules('new_confirm', $this->lang->line('change_password_validation_new_password_confirm_label'), 'required');
@@ -203,6 +217,10 @@ class Auth extends CI_Controller
 	 */
 	public function forgot_password()
 	{
+                         $this->load->model('Cetba_model');
+            $data['polozky'] = $this->Cetba_model->get_menu();
+                           $this->load->view('templates/Header',$data);
+
 		$this->data['title'] = $this->lang->line('forgot_password_heading');
 		
 		// setting validation rules by checking whether identity is username or email
@@ -283,6 +301,10 @@ class Auth extends CI_Controller
 	 */
 	public function reset_password($code = NULL)
 	{
+                        $this->load->model('Cetba_model');
+            $data['polozky'] = $this->Cetba_model->get_menu();
+                           $this->load->view('templates/Header',$data);
+
 		if (!$code)
 		{
 			show_404();
@@ -380,6 +402,10 @@ class Auth extends CI_Controller
 	 */
 	public function activate($id, $code = FALSE)
 	{
+                        $this->load->model('Cetba_model');
+            $data['polozky'] = $this->Cetba_model->get_menu();
+                           $this->load->view('templates/Header',$data);
+
 		$activation = FALSE;
 
 		if ($code !== FALSE)
@@ -412,6 +438,10 @@ class Auth extends CI_Controller
 	 */
 	public function deactivate($id = NULL)
 	{
+                        $this->load->model('Cetba_model');
+            $data['polozky'] = $this->Cetba_model->get_menu();
+                           $this->load->view('templates/Header',$data);
+
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
 		{
 			// redirect them to the home page because they must be an administrator to view this
@@ -461,6 +491,10 @@ class Auth extends CI_Controller
 	 */
 	public function create_user()
 	{
+                        $this->load->model('Cetba_model');
+            $data['polozky'] = $this->Cetba_model->get_menu();
+                           $this->load->view('templates/Header',$data);
+
 		$this->data['title'] = $this->lang->line('create_user_heading');
 
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
@@ -571,6 +605,10 @@ class Auth extends CI_Controller
 	* Redirect a user checking if is admin
 	*/
 	public function redirectUser(){
+                        $this->load->model('Cetba_model');
+            $data['polozky'] = $this->Cetba_model->get_menu();
+                           $this->load->view('templates/Header',$data);
+
 		if ($this->ion_auth->is_admin()){
 			redirect('auth', 'refresh');
 		}
@@ -584,6 +622,10 @@ class Auth extends CI_Controller
 	 */
 	public function edit_user($id)
 	{
+                        $this->load->model('Cetba_model');
+            $data['polozky'] = $this->Cetba_model->get_menu();
+                           $this->load->view('templates/Header');
+
 		$this->data['title'] = $this->lang->line('edit_user_heading');
 
 		if (!$this->ion_auth->logged_in() || (!$this->ion_auth->is_admin() && !($this->ion_auth->user()->row()->id == $id)))
@@ -725,6 +767,10 @@ class Auth extends CI_Controller
 	 */
 	public function create_group()
 	{
+                        $this->load->model('Cetba_model');
+            $data['polozky'] = $this->Cetba_model->get_menu();
+                           $this->load->view('templates/Header',$data);
+
 		$this->data['title'] = $this->lang->line('create_group_title');
 
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
@@ -779,6 +825,10 @@ class Auth extends CI_Controller
 	 */
 	public function edit_group($id)
 	{
+                                          $this->load->model('Cetba_model');
+            $data['polozky'] = $this->Cetba_model->get_menu();
+                           $this->load->view('templates/Header',$data);
+
 		// bail if no group id given
 		if (!$id || empty($id))
 		{
@@ -848,6 +898,9 @@ class Auth extends CI_Controller
 	 */
 	public function _get_csrf_nonce()
 	{
+                        $this->load->model('Cetba_model');
+            $data['polozky'] = $this->Cetba_model->get_menu();
+                           $this->load->view('templates/Header',$data);
 		$this->load->helper('string');
 		$key = random_string('alnum', 8);
 		$value = random_string('alnum', 20);
@@ -861,6 +914,8 @@ class Auth extends CI_Controller
 	 * @return bool Whether the posted CSRF token matches
 	 */
 	public function _valid_csrf_nonce(){
+                           $this->load->view('templates/Header');
+
 		$csrfkey = $this->input->post($this->session->flashdata('csrfkey'));
 		if ($csrfkey && $csrfkey === $this->session->flashdata('csrfvalue'))
 		{
@@ -878,6 +933,9 @@ class Auth extends CI_Controller
 	 */
 	public function _render_page($view, $data = NULL, $returnhtml = FALSE)//I think this makes more sense
 	{
+                        $this->load->model('Cetba_model');
+            $data['polozky'] = $this->Cetba_model->get_menu();
+                           $this->load->view('templates/Header',$data);
 
 		$viewdata = (empty($data)) ? $this->data : $data;
 
@@ -889,5 +947,20 @@ class Auth extends CI_Controller
 			return $view_html;
 		}
 	}
+        public function NovaKniha() 
+                {
+             $this->load->model('Cetba_model');
+            $data['polozky'] = $this->Cetba_model->get_menu();
+		$this->load->view('templates/Header', $data);
+                
+                if ($this->ion_auth->logged_in()){
+		$this->load->view('pages/NovaKniha', $data);  
+		$this->load->view('templates/Footer');           
+                }
+            
+                }
+
+
+        
 
 }

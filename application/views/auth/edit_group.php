@@ -1,3 +1,8 @@
+<div>&nbsp</div>
+<style>
+    .container{text-align: center;}
+</style>
+<div class="container">
 <h1><?php echo lang('edit_group_heading');?></h1>
 <p><?php echo lang('edit_group_subheading');?></p>
 
@@ -18,3 +23,4 @@
       <p><?php echo form_submit('submit', lang('edit_group_submit_btn'));?></p>
 
 <?php echo form_close();?>
+</div>

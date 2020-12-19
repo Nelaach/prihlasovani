@@ -1,3 +1,8 @@
+<div>&nbsp</div>
+<style>
+    .container{text-align: center;}
+</style>
+<div class="container">
 <h1><?php echo lang('login_heading');?></h1>
 <p><?php echo lang('login_subheading');?></p>
 
@@ -26,3 +31,4 @@
 <?php echo form_close();?>
 
 <p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
+</div>

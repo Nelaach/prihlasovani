@@ -1,3 +1,8 @@
+<div>&nbsp</div>
+<style>
+    .container{text-align: center;}
+</style>
+<div class="container">
 <h1><?php echo lang('change_password_heading');?></h1>
 
 <div id="infoMessage"><?php echo $message;?></div>
@@ -23,3 +28,4 @@
       <p><?php echo form_submit('submit', lang('change_password_submit_btn'));?></p>
 
 <?php echo form_close();?>
+</div>
