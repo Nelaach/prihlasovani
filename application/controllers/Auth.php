@@ -66,6 +66,7 @@ class Auth extends CI_Controller
 	 */
 	public function login()
 	{   
+            $userdata = print_r($_SESSION);
                         $this->load->model('Cetba_model');
             $data['polozky'] = $this->Cetba_model->get_menu();
                            $this->load->view('templates/Header',$data);
@@ -497,7 +498,7 @@ class Auth extends CI_Controller
 
 		$this->data['title'] = $this->lang->line('create_user_heading');
 
-		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
+		if ($this->ion_auth->logged_in())
 		{
 			redirect('auth', 'refresh');
 		}
@@ -960,6 +961,7 @@ class Auth extends CI_Controller
             
                 }
 
+                
 
         
 

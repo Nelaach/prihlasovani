@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Kurzy</title>
+        <title>Knihy k maturitě</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,47 +20,70 @@
 
 
     <body>
+        <?php if (empty($this->session->userdata('identity'))) { ?>
 
-        <nav class="mb-1 navbar navbar-expand-lg navbar-dark orange lighten-1 fixed-top">
+            <nav class="mb-1 navbar navbar-expand-lg navbar-dark orange lighten-1 fixed-top">
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-          
-                <?php foreach($polozky as $p): ?>
-        <li class ="nav-item">
-        <a class="nav-link" href="<?php echo base_url('pages/')?><?=$p->display?>"><?= $p->display?><span class="sr-only">(current)</span></a>
-        </li>            
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <?php foreach ($polozky as $p): ?>
+                            <li class ="nav-item">
+                                <a class="nav-link" href="<?php echo base_url('pages/') ?><?= $p->display ?>"><?= $p->display ?><span class="sr-only">(current)</span></a>
+                            </li>            
+                        <?php endforeach; ?>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <form class="form-inline my-2 my-lg-0">
+                            <li class="nav-item"> <a class="nav-link"     <a href="<?php echo base_url('Auth/login'); ?>">Přihlášení</a>  </li>                            
+                            <li class="nav-item"> <a class="nav-link"     <a href="<?php echo base_url('Auth/create_user'); ?>">Registrace</a>  </li>
+                        </form>            
+                    </ul>
+                </div>
+            </nav>
 
-    <?php endforeach; ?>
- 
-     
-     
-    </ul>
+        <?php } ?>
+
+        <?php if (!empty($this->session->userdata('identity'))) { ?>
+
+            <nav class="mb-1 navbar navbar-expand-lg navbar-dark orange lighten-1 fixed-top">
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <?php foreach ($polozky as $p): ?>
+                            <li class ="nav-item">
+                                <a class="nav-link" href="<?php echo base_url('pages/') ?><?= $p->display ?>"><?= $p->display ?><span class="sr-only">(current)</span></a>
+                            </li>            
+                        <?php endforeach; ?>
+                    <li class="nav-item"> <a class="nav-link" <a href="<?php echo base_url('auth/NovaKniha'); ?>">Přidání knihy</a></li>
+                            
+                    </ul>
+                    <ul class="navbar-nav">
+                        <form class="form-inline my-2 my-lg-0">
+                            <li class="nav-item">  <?php echo $this->session->userdata('identity'); ?></li>
+                            <li class="nav-item"> <a class="nav-link"     <a href="<?php echo base_url('Auth/logout'); ?>">Odhlásit se</a>  </li>
+
+                        </form>            
+                    </ul>
+                </div>
+            </nav>
+
+        <?php } ?>
 
 
-                <ul class="navbar-nav">
-                    <form class="form-inline my-2 my-lg-0">
-                        <li class="nav-item"> <a class="nav-link"     <a href="<?php echo base_url('Auth/create_user'); ?>">Registrovat nového uživatele</a>  </li>
-                        <li class="nav-item"> <a class="nav-link"     <a href="<?php echo base_url('Auth/logout'); ?>">Odhlásit se</a>  </li>
-
-                    </form>            
-
-                </ul>
 
 
 
-
-
-
-            </div>
-
-        </nav>
-                    <div>&nbsp</div>
+        <div>&nbsp</div>
 
     </body>
 </html>
