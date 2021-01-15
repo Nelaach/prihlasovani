@@ -14,7 +14,7 @@
 
 
         <div class="container">	
-            <form method="post" action="http://localhost/Kurzy/index.php/main/save">
+            <form method="post" action="http://localhost/Prihlasovani/index.php/auth/save">
                 <h4 style="text-align: center">Vytvoření kurzu</h4>
                 <?php
                 if (isset($error)) {
@@ -27,7 +27,7 @@
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                             </div>
-                            <input type="text" class="form-control" name="nazev">
+                            <input type="text" class="form-control" required name="nazev_knihy">
                         </div>
                     </div>      
 
@@ -37,17 +37,21 @@
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                             </div>
-                            <input type="text" class="form-control" name="pocet_mist">
+                            <input type="text" class="form-control" required name="autora">
                         </div> 
                     </div>
                 </div>
 
-
-                <div class="form-group">
-                    <label>Děj?</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="popis"></textarea>
-
-                </div>
+                        <label>Období</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                            </div>
+                            <input type="number" min="1" max="4" class="form-control" required name="kategorie_idkategorie">
+                        </div> 
+                        <div>1... Světová a česká literatura do konce 18. století </div>
+                        <div>2... Světová a česká 19. století </div>
+                        <div>3... Světová literatura 20. a 21. století </div>
+                        <div>4... Česká literatura 20. a 21. století </div>
 
 
 
